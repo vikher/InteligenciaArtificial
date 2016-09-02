@@ -1,0 +1,15 @@
+[-+]?{DA}+ {lexeme=yytext(); return INT ;}
+[-+]?{N}+ {lexeme=yytext(); return LONG ;}
+[-+]?{L}+ {lexeme=yytext(); return CHAR ;}
+
+{L}({L}|{D})* {lexeme=yytext(); return ID ;}
+
+int[a-z]+ {lexeme=yytext(); return CORRECTO ;}
+
+
+
+("int")[a-z]+("=")[0-9]+(";")? {return NUEVOINT}
+
+
+
+("+"|"-")?[0-9]+("."[0-9]+)? {return NUEVO}

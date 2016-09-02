@@ -1,0 +1,4 @@
+elimina :: [Int] -> [Int]
+elimina  xs = el[ x | x <- xs, x `mod` 4 /= 0 ]
+
+el xs = [ x | x <- xs, x `mod` 2 == 0  ]

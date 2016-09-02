@@ -1,0 +1,33 @@
+iniciar-programa
+define-nueva-instruccion ordena como
+inicio
+    mientras no-orientado-al-este hacer
+        gira-izquierda;
+    mientras no-junto-a-zumbador y frente-libre hacer
+        avanza;
+     mientras junto-a-zumbador hacer
+         coge-zumbador;
+     mientras no-orientado-al-norte hacer
+        gira-izquierda;
+     mientras algun-zumbador-en-la-mochila hacer
+     inicio
+         avanza;
+         deja-zumbador;
+     fin;
+     mientras no-orientado-al-sur hacer
+        gira-izquierda;
+     mientras frente-libre hacer
+        avanza;
+     repetir 3 veces
+         gira-izquierda;
+     mientras frente-libre hacer
+        avanza;
+     ordena;
+
+
+fin
+    inicia-ejecucion
+    ordena;
+        apagate;
+    termina-ejecucion
+finalizar-programa

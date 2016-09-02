@@ -1,0 +1,53 @@
+iniciar-programa
+
+    define-nueva-instruccion gira-derecha como
+    inicio
+        repetir 3 veces
+        gira-izquierda;
+    fin;
+
+    define-nueva-instruccion acomoda como
+    inicio
+        mientras frente-libre hacer
+        inicio
+            avanza;
+            si junto-a-zumbador hacer
+                coge-zumbador;
+            mientras algun-zumbador-en-la-mochila hacer
+            inicio
+                avanza;
+                deja-zumbador;
+            fin;
+
+            mientras no-orientado-al-sur hacer
+                gira-izquierda;
+            mientras frente-libre hacer
+            avanza;
+
+            mientras no-orientado-al-este hacer
+                gira-izquierda;
+
+            fin;
+         fin;
+       fin;
+
+
+       define-nueva-instruccion regresa como
+
+       inicio
+           repetir 3 veces
+           gira-izquierda;
+           mientras frente-libre hacer
+           avanza;
+       fin;
+
+
+
+    inicia-ejecucion
+    mientras no-orientado-al-este hacer
+    gira-izquierda;
+    acomoda;
+    regresa;
+        apagate;
+    termina-ejecucion
+finalizar-programa

@@ -1,0 +1,104 @@
+hijo(victor,rosario).
+ hijo(cristofer,rosario).
+ hijo(victor,victorp).
+ hijo(cristofer,victorp).
+ hijo(jessica,jose).
+ hijo(adi,jose).
+ hijo(jessica,verta).
+ hijo(adi,verta).
+ hijo(felipe,luisa).
+ hijo(felipe,felipep).
+ hijo(cristobalito,carlota).
+ hijo(cristobalito,ruben).
+ hijo(omar,estela).
+ hijo(edna,estela).
+ hijo(omar,omarp).
+hijo(edna,omarp).
+ hijo(rosario,esperanza).
+ hijo(luisa,esperanza).
+ hijo(jose,esperanza).
+ hijo(carlota,esperanza).
+ hijo(estela,esperanza).
+ hijo(rosario,pedro).
+ hijo(luisa,pedro).
+ hijo(jose,pedro).
+ hijo(carlota,pedro).
+ hijo(estela,pedro).
+ hijo(sofia,jessica).
+ hijo(miguel,edna).
+ hijo(miguel,miguelp).
+ hijo(daniel,edna).
+ hijo(daniel,miguelp).
+ hijo(esperanza,lucia).
+ hijo(esperanza,leocadio).
+ hijo(pedro,platon).
+ hijo(pedro,gudelia).
+ hijo(halie,victor).
+ hijo(aline,cristofer).
+ hijo(hugo,adi).
+ hijo(paco,cristobalito).
+ hijo(luis,felipe).
+ hijo(pepe,omar).
+ mujer(rosario).
+ mujer(jessica).
+ mujer(adi).
+ mujer(luisa).
+ mujer(carlota).
+ mujer(estela).
+ mujer(edna).
+ mujer(esperanza).
+ mujer(sofia).
+ mujer(gudelia).
+ mujer(lucia).
+ mujer(halie).
+ mujer(aline).
+hombre(victor).
+ hombre(victorp).
+ hombre(cristofer).
+ hombre(jose).
+ hombre(felipe).
+ hombre(felipep).
+ hombre(cristobalito).
+ hombre(omar).
+ hombre(omarp).
+ hombre(pedro).
+ hombre(platon).
+ hombre(leocadio).
+ hombre(miguel).
+ hombre(daniel).
+ hombre(hugo).
+ hombre(paco).
+ hombre(luis).
+ hombre(pepe).
+
+
+padre(B,A):-hijo(A,B),hombre(B).
+madre(B,A):-hijo(A,B),mujer(B).
+esposo(A,B):-hijo(C,A),hijo(C,B).
+esposa(A,B):-hija(D,A),hija(D,B).	
+hermano(X,Y):-hijo(X,Z),hijo(Y,Z),X\=Y,hombre(Y).
+hermana(X,Y),mujer(X),hijo(X,Z),hijo(Y,Z),Y\=X.
+tio(Y,Z):-hombre(Z),hijo(X,W),hijo(Z,W),hijo(Y,X),Z\=X.
+tia(X,Y):-mujer(X),hijo(X,W),hijo(Z,W),hijo(Y,Z),X\=Z.
+tioabuelo(V,Z):-hombre(Z),hijo(V,Y),hijo(X,W),hijo(Z,W),hijo(Y,X),Z\=X.
+tiaabuela(X,V):-mujer(X),,hijo(V,Y),hijo(X,W),hijo(Z,W),hijo(Y,Z),X\=Z.
+sobrino(X,Y):-hombre(X),hijo(X,Z),hijo(Z,W),hijo(Y,W),Z\=Y.
+sobrina(X,Y):-mujer(X),hijo(X,Z),hijo(Z,W),hijo(Y,W),Z\=Y.
+sobrinonieto(V,Y):-hombre(X),hijo(X,Z),hijo(Z,W),hijo(Y,W),hijo(V,X),Z\=Y.
+sobrinonieta(V,Y):-mujer(X),hijo(X,Z),hijo(Z,W),hijo(Y,W),hijo(V,X),Z\=Y.
+hija(X,Y):-mujer(X),hijo(X,Y).
+bisabuela(W,X):-mujer(W),hijo(Z,W),hijo(Y,Z),hijo(X,Y).
+bisabuelo(W,X):-hombre(W),hijo(Z,W),hijo(Y,Z),hijo(X,Y).
+bisnieto(X,W):-hombre(X),hijo(Z,W),hijo(Y,Z),hijo(X,Y).
+bisnieta(X,W):-mujer(X),hijo(Z,W),hijo(Y,Z),hijo(X,Y).
+tataranieto(X,V):-hombre(X),hijo(Z,W),hijo(Y,Z),hijo(X,Y),hijo(W,V).
+tataranieta(X,V):-mujer(X),hijo(Z,W),hijo(Y,Z),hijo(X,Y),hijo(W,V).
+tatarabuela(v,X):-mujer(v),hijo(Z,W),hijo(Y,Z),hijo(X,Y),hijo(w,v).
+tatarabuelo(v,X):-hombre(v),hijo(Z,W),hijo(Y,Z),hijo(X,Y),hijo(w,v).
+abuelo(X,Y):-hombre(X),hijo(Z,X),hijo(Y,Z).
+abuela(X,Y):-mujer(X),hijo(Z,X),hijo(Y,Z).
+nieta(X,Z):-mujer(X),hijo(Y,Z),hijo(X,Y).
+nieto(X,Z):-hombre(X),hijo(Y,Z),hijo(X,Y).
+prima(V,Z):-mujer(V),hijo(X,W),hijo(Y,W),hijo(Z,X),hijo(V,Y),X\=Y.
+primo(V,Z):-hombre(V),hijo(X,W),hijo(Y,W),hijo(Z,X),hijo(V,Y),X\=Y.
+cunado(X,B):-esposo(A,B),hijo(A,Y),hijo(X,Y),hombre(X).

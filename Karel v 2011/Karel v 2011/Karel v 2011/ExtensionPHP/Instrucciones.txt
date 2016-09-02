@@ -1,0 +1,58 @@
+La libreria KarelPHP.dll es una extensión de PHP compilada para PHP 5.2.x que permite compilar y evaluar programas de Karel desde un script de PHP, actualmente soporta dos instrucciones:
+
+COMPILAR UN CODIGO
+------------------
+  * Sintáxis: karel_compila(archivoDeCodigo, Lenguaje);
+	
+	- archivoDeCodigo: Es una cadena que contiene la ruta del archivo de texto con el código que se desea compilar.
+
+	- Lenguaje: Es un entero cuyos valores pueden ser {0 - Pascal, 1 - Java}
+
+
+  * Resultados: El comando devuelve el resultado como un archivo de texto, los valores posibles son:
+
+	- OK : Indica que el archivo compiló correctamente
+	
+	- ERR|<descripcion_error>: El primer "ERR" indica que hubo un error durante la compilación, después del pipe vendrá una línea de texto que contiene la descripción del error.
+
+
+EVALUAR UN CODIGO
+-----------------
+
+  * Sintáxis: karel_evalua(archivoDeCodigo, Lenguaje, archivoDeMundo, archivoCondicionesDeEvaluacion, debugInfo);
+
+	- archivoDeCodigo: Es una cadena que contiene la ruta del archivo con el código.
+	
+	- Lenguaje: Entero que especifica el lenguaje, los valores son {0 - Pascal, 1 - Java}
+
+	- archivoDeMundo: Es una cadena que contiene la ruta del archivo del mundo que se utilizará para evaluar el programa
+
+	- archivoCondicionesDeEvaluacion: Cadena que contiene la ruta del archivo con las condiciones de evaluación.
+	
+	- debugInfo: Bandera para recibir información de depuración.  Los valores posibles son {0 - DESHABILITAR DEPURACION, 1 - HABILITAR DEPURACION}
+
+
+  * Resultados: Los resultados posibles son:
+
+	- FILENOTFOUND|codigo: Indica que no se pudo hallar el archivo de código.
+	
+	- FILENOTFOUND|mundo: No se pudo hallar el archivo del mundo.
+	
+	- FILENOTFOUND|condiciones: No se pudo hallar el archivo de condiciones de evaluación.
+
+	- ERR|Error de compilacion <descripcion_error>: Indica que hubo un error al compilar el codigo.
+
+	- ERR|Error al cargar archivo de mundo: Indica que el archivo de mundo tiene un formato incorrecto.
+
+	- ERR|Error al cargar archivo de condiciones: Indica que el archivo de condiciones tiene un formato incorrecto.
+
+	- OK|<resultado>|<descripcion>: Un OK como primer parametro del resultado indica que  los archivos de mundo y condiciones tienen un formato correcto y que el códico compiló correctamente.  El segundo parámetro indica el resultado de la evaluación, por último el tercer parámetro (en los casos que aplica) da una descripción del resultado.
+
+		<resultado>: Puede tener cualquiera de los siguientes valores
+			- OK: Indica que el programa completó la ejecución y cumplió correctamente con las condiciones de evaluación.
+
+			- SI: Indica que el reaultado de la ejecución del programa no coincide con el esperado en las condiciones de evaluación. La descripción da un mensaje indicando cual fue el error.
+
+			- EL: Indica que durante la ejecución se excedió alguno de los límites de ejecución. La descripción da un mensaje indicando cual límite fue excedido.
+
+			

@@ -1,0 +1,24 @@
+iniciar-programa
+define-nueva-instruccion gira-derecha como
+inicio
+ repetir  veces
+ gira-izquierda;
+ fin;
+    define-nueva-instruccion orilla como
+ inicio
+  mientras frente-libre hacer
+  avanza;
+  gira-derecha;
+  orilla;
+ fin;
+
+    inicia-ejecucion
+        orilla;
+        avanza;
+       gira-izquierda;
+
+       apagate;
+
+
+    termina-ejecucion
+finalizar-programa
